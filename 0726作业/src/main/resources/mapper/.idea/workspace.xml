@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2ad9c115-49a9-4e15-9561-f7360bcce5ae" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/../../java/cn/kgc/entity/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java/cn/kgc/entity/Phone.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java/cn/kgc/entity/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java/cn/kgc/entity/Users.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../jdbc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StudentMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/java/cn/kgc/TestUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/cn/kgc/entity/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/cn/kgc/entity/School.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchoolMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SchoolMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../test/java/cn/kgc/TestSchool.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../test/java/cn/kgc/TestSchool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../target/classes/cn/kgc/entity/School.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../target/classes/cn/kgc/entity/School.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../target/classes/mapper/SchoolMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../target/classes/mapper/SchoolMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../target/classes/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../target/classes/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../target/test-classes/cn/kgc/TestSchool.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../target/test-classes/cn/kgc/TestSchool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../target/classes/mapper/StudentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../target/classes/mybatis-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../target/test-classes/cn/kgc/TestStudent.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../target/test-classes/cn/kgc/TestStudent.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/apache-maven-3.3.9" />
+        <option name="userSettingsFile" value="D:\apache-maven-3.3.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2T9ZQfokP6ONljtsGKbU1G123vm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="abbreviatePackageNames" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ad9c115-49a9-4e15-9561-f7360bcce5ae" name="默认更改列表" comment="" />
+      <created>1690457241619</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1690457241619</updated>
+      <workItem from="1690457243229" duration="7000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="entity.Student">
+    <!-- 在对应的Mapper XML文件中进行配置 -->
+    <select id="selectStudentsWithClassName" resultMap="StudentWithClassResultMap">
+        SELECT s.*, c.className
+        FROM classes c
+        INNER JOIN student s ON c.classId = s.classId
+    </select>
+
+    <!-- 定义结果映射 resultMap -->
+    <resultMap id="StudentWithClassResultMap" type="Student">
+
+        <id property="stuId" column="stuId"/>
+        <result property="stuName" column="stuName"/>
+        <result property="stuSex" column="stuSex"/>
+        <result property="stuAge" column="stuAge"/>
+        <result property="stuAddress" column="stuAddress"/>
+
+        <association property="classInfo" javaType="Class">
+            <id property="classId" column="classId"/>
+            <result property="className" column="className"/>
+
+        </association>
+    </resultMap>
+
+
+</mapper>

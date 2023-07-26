@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.entity.Student">
+    <!--选择全部的-->
+    <select id="getAllStudent" resultType="Student">
+        select * from student
+    </select>
+    <!--选择通过id-->
+    <select id="getStudentById" parameterType="Integer" resultType="Student">
+
+        select * from student where stuId=#{stuId}
+    </select>
+    <!--插入-->
+    <insert id="addStudent" parameterType="Student">
+        INSERT INTO student(stuName,stuAge,stuSex,stuAddress)VALUES(#{stuName},#{stuAge},#{stuSex},#{stuAddress})
+
+    </insert>
+
+
+
+</mapper>

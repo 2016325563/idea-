@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.entity.School">
+
+    <!--选择全部的-->
+
+    <select id="getAllSchool" resultType="School" parameterType="String">
+
+        select * from school where schoolName like '%${value}%'
+
+    </select>
+
+    <!--通过id选择-->
+    <select id="getSchoolById" parameterType="Integer" resultType="School">
+
+        select * from school where sid=#{sid}
+
+    </select>
+    <!--新增数据-->
+    <insert id="insertSchool" parameterType="School">
+        Insert into school(schoolName,schoolAddress,schoolPhone)value(#{schoolName},#{schoolAddress},#{schoolPhone})
+
+    </insert>
+    <!-- 修改数据，更新单个字段 -->
+    <update id="updateSchool" parameterType="School">
+        Update school
+        <set>
+            <if test="schoolName != null">schoolName = #{schoolName},</if>
+            <if test="schoolAddress != null">schoolAddress = #{schoolAddress},</if>
+            <if test="schoolPhone != null">schoolPhone = #{schoolPhone},</if>
+        </set>
+        Where sid = #{sid}
+    </update>
+
+    <!--删除-->
+    <delete id="delSchoolById" parameterType="Integer">
+        delete from school where sid= #{sid}
+
+    </delete>
+
+    <select id="getCount" resultType="Integer">
+        <!--
+                select count(*) from school
+        -->
+        select count(*) from school where schoolName like concat('%',#{schoolName},'%')
+    </select>
+
+    <select id="searchSchool" parameterType="Map" resultType="School">
+
+        select * from school where schoolName=#{schoolName}
+        limit #{currPage},#{pageSize}
+
+    </select>
+</mapper>
