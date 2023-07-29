@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.entity.Student">
+    <resultMap id="studentAndPhoneMap" type="Student">
+        <id column="stuId" property="stuId"></id>
+        <result column="stuName" property="stuName"></result>
+        <result column="stuAge" property="stuAge"></result>
+        <result column="stuSex" property="stuSex"></result>
+        <result column="stuAddress" property="stuAddress"></result>
+
+
+        <collection property="listPhone" ofType="Phone">
+            <id column="phoneId" property="phoneId"></id>
+            <result column="phoneNum" property="phoneNum"></result>
+            <result column="stuId" property="stuId"></result>
+        </collection>
+    </resultMap>
+
+
+    <!--选择全部的-->
+    <select id="getAllStudent" resultType="Student">
+        select * from student
+    </select>
+    <!--选择通过id-->
+    <select id="getStudentById" parameterType="Integer" resultType="Student">
+
+        select * from student where stuId=#{stuId}
+    </select>
+    <!--插入-->
+    <insert id="addStudent" parameterType="Student">
+        INSERT INTO student(stuName,stuAge,stuSex,stuAddress)VALUES(#{stuName},#{stuAge},#{stuSex},#{stuAddress})
+
+    </insert>
+
+    <select id="getNumById" parameterType="Integer" resultMap="studentAndPhoneMap">
+        SELECT * FROM student s
+        INNER JOIN phone p
+        on p.phoneId=s.stuId
+        where s.stuId=#{stuId}
+
+    </select>
+
+    <select id="getStuByAge" parameterType="Integer" resultType="Student">
+
+        SELECT * from student s
+        <where>
+            <if test="_parameter !=null and _parameter !=''">
+                s.stuAge>=#{stuAge}
+            </if>
+
+        </where>
+    </select>
+
+
+    <!-- 定义更新学生信息的SQL语句 -->
+    <update id="updateStudentById" parameterType="Student">
+        UPDATE student
+        <set>
+            <!-- 使用<if>标签来根据条件动态拼接更新语句 -->
+            <if test="stuName != null and stuName != ''">stuName = #{stuName},</if>
+            <if test="stuAge != null and stuAge > 0">stuAge = #{stuAge},</if>
+            <if test="stuSex != null and stuSex != ''">stuSex = #{stuSex},</if>
+            <if test="stuAddress != null and stuAddress != ''">stuAddress = #{stuAddress}</if>
+
+        </set>
+        WHERE stuId = #{stuId}
+    </update>
+    <select id="getStuByName" parameterType="Map" resultType="Student">
+        SELECT * FROM student
+        <where>
+            <if test="stuName !=null and stuName !=''">
+                stuName like concat('%',#{stuName},'%')
+            </if>
+        </where>
+        limit #{page},#{pageSize}
+    </select>
+
+</mapper>

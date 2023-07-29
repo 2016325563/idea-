@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.entity.Users">
+    <!--结果集映射-->
+    <resultMap id="usersAndCard" type="Users">
+
+        <id column="userId" property="userId"></id>
+        <result column="userName" property="userName"></result>
+
+        <!--对象映射-->
+        <association property="card" javaType="Card">
+            <id column="CardId" property="cardId"></id>
+            <result column="cardNumber" property="cardNumber"></result>
+        </association>
+
+    </resultMap>
+
+
+    <select id="getCardByUserId" parameterType="Integer" resultMap="usersAndCard">
+
+        select * from card c
+        inner join users u
+        on c.cardid=u.userid
+        where u.userid=#{userId}
+
+
+    </select>
+
+</mapper>

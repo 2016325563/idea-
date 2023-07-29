@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="entity.Doctor">
+
+    <select id="selLikeName">
+        SELECT * from doctor
+        <where>
+            <if test="docName!=null and docName!=''">
+                doctor.docName LIKE concat('%','#{docName}','%')
+            </if>
+            <if test="docSex!=null and docSex!=''">
+                and doctor.docSex=#{docSex}
+            </if>
+        </where>
+
+    </select>
+
+
+</mapper>

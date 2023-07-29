@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.entity.Emp">
+
+    <!-- 定义结果映射 -->
+    <resultMap id="empAndProj" type="Emp">
+
+        <id column="empId" property="empId"/>
+        <result column="empName" property="empName"/>
+
+        <collection property="ListProject" ofType="Project">
+            <id column="projId" property="projId"/>
+            <result column="projName" property="projName"/>
+        </collection>
+
+    </resultMap>
+
+    <!-- 定义查询语句，返回类型为Emp实体对象的List集合 -->
+    <select id="getProjectByEmpId" resultMap="empAndProj" parameterType="Integer">
+
+        SELECT e.*,p.*
+        FROM emp e
+        INNER JOIN empAndProj ep ON e.empId = ep.empId
+        INNER JOIN project p ON p.projId = ep.projectId
+        WHERE e.empId = #{empId}
+    </select>
+
+
+</mapper>
