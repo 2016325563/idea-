@@ -1,19 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
 <mapper namespace="entity.Doctor">
 
-    <select id="selLikeName">
-        SELECT * from doctor
+    <select id="selLikeName" parameterType="Map" resultType="Doctor">
+        SELECT * FROM doctor
         <where>
-            <if test="docName!=null and docName!=''">
-                doctor.docName LIKE concat('%','#{docName}','%')
+            <if test="docName != null and docName != ''">
+                doctor.docName LIKE CONCAT('%', #{docName}, '%')
             </if>
-            <if test="docSex!=null and docSex!=''">
-                and doctor.docSex=#{docSex}
+            <if test="docSex != null and docSex != ''">
+                <if test="docName != null and docName != ''">
+                    AND
+                </if>
+                doctor.docSex = #{docSex}
             </if>
         </where>
-
     </select>
+
+    <!-- 根据医院地址查询医生信息及关联的医院信息 -->
+    <select id="selectDoctorByHospitalAddress" resultMap="DoctorWithHospitalResultMap">
+        SELECT doctor.*, hospital.*
+        FROM doctor
+        LEFT JOIN hospital ON hospital.hopId = doctor.hopId
+        WHERE hospital.hopAdress LIKE CONCAT('%', #{hospitalAddress}, '%')
+    </select>
+
+    <!-- 定义结果映射 -->
+    <resultMap id="DoctorResultMap" type="Doctor">
+        <!-- 映射Doctor实体类的属性 -->
+        <id column="docId" property="docId"/>
+        <result column="docName" property="docName"/>
+        <result column="docSex" property="docSex"/>
+        <result column="docAge" property="docAge"/>
+        <!-- 不包含关联的Hospital实体类的属性 -->
+    </resultMap>
+
+    <resultMap id="HospitalResultMap" type="Hospital">
+        <!-- 映射Hospital实体类的属性 -->
+        <id column="hopId" property="hopId"/>
+        <result column="hopName" property="hopName"/>
+        <result column="hopAdress" property="hopAddress"/>
+        <result column="hopPho" property="hopPho"/>
+        <!-- 不包含关联的Doctor实体类的属性 -->
+    </resultMap>
+
+    <resultMap id="DoctorWithHospitalResultMap" type="Doctor">
+        <id column="docId" property="docId"/>
+        <result column="docName" property="docName"/>
+        <result column="docSex" property="docSex"/>
+        <result column="docAge" property="docAge"/>
+        <association property="hospitals" resultMap="HospitalResultMap"/>
+        <!-- 包含关联的Hospital实体类的属性 -->
+    </resultMap>
+
+    <insert id="insertDoctor">
+        INSERT INTO doctor (docId, docName, docSex, docAge, hopId)
+        VALUES (#{docId}, #{docName}, #{docSex}, #{docAge}, #{hopId})
+    </insert>
+
+    <delete id="deleteDoctorById">
+        DELETE FROM doctor WHERE doctor.docId = #{docId}
+    </delete>
+
+    <update id="updateDoctorById">
+        UPDATE doctor
+        SET doctor.docName = #{docName}, doctor.docAge = #{docAge}
+        WHERE doctor.docId = #{docId}
+    </update>
+
 
 
 </mapper>

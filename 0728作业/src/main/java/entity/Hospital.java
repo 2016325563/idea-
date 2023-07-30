@@ -6,18 +6,35 @@ public class Hospital {
 
     private Integer hopId;
     private String hopName;
-    private String hopAdress;
+    private String hopAddress;
     private String hopPho;
     List<Doctor> doctors;
+    private String MaleDoctorCount;
+
+    public String getMaleDoctorCount() {
+        return MaleDoctorCount;
+    }
+
+    public void setMaleDoctorCount(String maleDoctorCount) {
+        MaleDoctorCount = maleDoctorCount;
+    }
 
     @Override
     public String toString() {
         return "Hospital{" +
                 "hopId=" + hopId +
                 ", hopName='" + hopName + '\'' +
-                ", hopAdress='" + hopAdress + '\'' +
-                ", hopPho=" + hopPho +
+                ", hopAddress='" + hopAddress + '\'' +
+                ", hopPho='" + hopPho + '\'' +
                 '}';
+    }
+
+    public Hospital(Integer hopId, String hopName, String hopAddress, String hopPho, List<Doctor> doctors) {
+        this.hopId = hopId;
+        this.hopName = hopName;
+        this.hopAddress = hopAddress;
+        this.hopPho = hopPho;
+        this.doctors = doctors;
     }
 
     public Integer getHopId() {
@@ -36,12 +53,12 @@ public class Hospital {
         this.hopName = hopName;
     }
 
-    public String getHopAdress() {
-        return hopAdress;
+    public String getHopAddress() {
+        return hopAddress;
     }
 
-    public void setHopAdress(String hopAdress) {
-        this.hopAdress = hopAdress;
+    public void setHopAddress(String hopAddress) {
+        this.hopAddress = hopAddress;
     }
 
     public String getHopPho() {
@@ -63,11 +80,12 @@ public class Hospital {
     public Hospital() {
     }
 
-    public Hospital(Integer hopId, String hopName, String hopAdress, String hopPho, List<Doctor> doctors) {
+    public Hospital(Integer hopId, String hopName, String hopAddress, String hopPho) {
         this.hopId = hopId;
         this.hopName = hopName;
-        this.hopAdress = hopAdress;
+        this.hopAddress = hopAddress;
         this.hopPho = hopPho;
-        this.doctors = doctors;
     }
+
+
 }

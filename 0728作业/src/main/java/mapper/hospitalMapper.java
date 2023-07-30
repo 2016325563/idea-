@@ -12,7 +12,7 @@ public interface hospitalMapper {
 
     //插入
     @Insert("INSERT INTO hospital VALUES(#{hopId},#{hopName},#{hopAdress},#{hopPho})")
-    public Integer insHop(Hospital hospital);
+    public Integer insHop(Hospital hospital1);
 
     //删除通过id
     @Delete("delete  from hospital WHERE hospital.hopId=#{hopId}")
@@ -20,9 +20,8 @@ public interface hospitalMapper {
 
 
     //修改通过id
-    @Update("UPDATE hospital SET hospital.hopName=#{hopName}," +
-            "hospital.hopAdress=#{hopAdress} WHERE hospital.hopId=#{hopId}")
-    public Integer upById(@Param("hopId") Integer hopId);
+    @Update("UPDATE hospital SET hopName=#{hopName},hopAdress=#{hopAdress} WHERE hopId=#{hopId}")
+    public Integer upById(Hospital hospital2);
 
 
 }

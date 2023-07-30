@@ -77,7 +77,6 @@ public class Doctor {
         this.hopId = hopId;
     }
 
-    public Doctor(Integer docId) {
-        this.docId = docId;
+    public Doctor() {
     }
 }
