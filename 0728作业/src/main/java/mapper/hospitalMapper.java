@@ -11,8 +11,11 @@ public interface hospitalMapper {
     public List<Hospital> selAllHop();
 
     //插入
-    @Insert("INSERT INTO hospital VALUES(#{hopId},#{hopName},#{hopAdress},#{hopPho})")
+    // 注意：这里的 SQL 语句使用了数据库支持的自增长机制（如 MySQL 的 AUTO_INCREMENT）
+    @Insert("INSERT INTO hospital (hopName, hopAdress, hopPho) VALUES (#{hopName}, #{hopAddress}, #{hopPho})")
+    @Options(useGeneratedKeys = true, keyProperty = "hopId")
     public Integer insHop(Hospital hospital1);
+
 
     //删除通过id
     @Delete("delete  from hospital WHERE hospital.hopId=#{hopId}")

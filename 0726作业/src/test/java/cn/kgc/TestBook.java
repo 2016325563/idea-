@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TestBook {
@@ -41,8 +42,18 @@ public class TestBook {
     @Test
     public void testGetBookById() {
         BookMapper bookMapper = sqlSession.getMapper(BookMapper.class);
-        Book book = bookMapper.getBookById(1);
-        System.out.println("根据id查询的book: " + book);
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        ids.add(1);
+        ids.add(2);
+        ids.add(7);
+        List<Book> listBook = sqlSession.selectList("getBookByIds", ids);
+        // System.out.println(listBook);
+        for (Book s : listBook) {
+            System.out.println(s);
+
+        }
+
+
     }
 
     // 查询所有书籍
@@ -66,9 +77,23 @@ public class TestBook {
         System.out.println("插入的数目: " + row);
     }
 
-    // 删除一本书籍
+    // 根据一组书籍
     @Test
-    public void testDeleteBookById() {
+    public void testDelBooksById() {
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        ids.add(9);
+        ids.add(10);
+        ids.add(11);
+        int row = sqlSession.delete("batchDelBooks", ids);
+        sqlSession.commit();
+        System.out.println("删除的数目是:" + row);
+
+
+    }
+
+    // 删除一组书籍
+    @Test
+    public void testDeleteBooksById() {
         BookMapper bookMapper = sqlSession.getMapper(BookMapper.class);
         int row = bookMapper.delBookById(6);
         sqlSession.commit();
@@ -88,5 +113,23 @@ public class TestBook {
 
     }
 
+    // 插入一组书籍
+    @Test
+    public void testAddBooks() {
+        //BookMapper bookMapper = sqlSession.getMapper(BookMapper.class);
+
+        Book bookIns = new Book(97, "hhh", 50, "zzz", "ggg");
+        Book bookIns2 = new Book(98, "hhh", 50, "zzz", "ggg");
+        Book bookIns3 = new Book(99, "hhh", 50, "zzz", "ggg");
+        List<Book> ids = new ArrayList<Book>();
+        ids.add(bookIns);
+        ids.add(bookIns2);
+        ids.add(bookIns3);
+
+
+        int row = sqlSession.insert("batchInsertBooks", ids);
+        sqlSession.commit();
+        System.out.println("插入的数目: " + row);
+    }
 
 }

@@ -56,7 +56,15 @@ public class TestUsers {
     public void TestEmp() {
 
         List<Emp> emp = sqlSession.selectList("getProjectByEmpId", 1);
+        // SqlSession sqlSession2=sqlSessionFactory.openSession();
+
+        List<Emp> emp2 = sqlSession.selectList("getProjectByEmpId", 1);
+
         for (Emp emp1 : emp) {
+            System.out.println(emp1.getEmpId() + "\t" + emp1.getEmpName() + "\t" + emp1.getListProject());
+        }
+
+        for (Emp emp1 : emp2) {
             System.out.println(emp1.getEmpId() + "\t" + emp1.getEmpName() + "\t" + emp1.getListProject());
         }
 

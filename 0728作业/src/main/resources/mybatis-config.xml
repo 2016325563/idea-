@@ -24,8 +24,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mapper/doctorMapper.xml"/>
-        <mapper resource="mapper/hospitalMapper.xml"/>
         <mapper class="mapper.doctorMapper"/>
         <mapper class="mapper.hospitalMapper"/>
 

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="mapper.BookMapper">
+
+    <!-- 定义结果集映射 -->
+    <resultMap id="bookDetailsResultMap" type="Book">
+        <id property="bookId" column="bookId"/>
+        <result property="bookName" column="bookName"/>
+        <result property="price" column="price"/>
+        <result property="description" column="description"/>
+
+        <!-- 使用association嵌套关联查询 -->
+        <association property="category" javaType="BookCategory">
+            <id property="categoryId" column="categoryId"/>
+            <result property="categoryName" column="categoryName"/>
+
+            <!-- 使用association关联查询 -->
+            <association property="library" javaType="Library">
+                <id property="libraryId" column="libraryId"/>
+                <result property="name" column="name"/>
+                <result property="address" column="address"/>
+                <result property="phone" column="phone"/>
+            </association>
+        </association>
+    </resultMap>
+
+
+    <!-- 基于书本id查询图书馆信息以及书本类别信息以及书本信息 -->
+    <select id="getBookDetailsById" parameterType="Integer" resultMap="bookDetailsResultMap">
+        SELECT *
+        FROM library
+        INNER JOIN bookcategory ON bookcategory.libraryId = library.libraryId
+        INNER JOIN book ON book.categoryId = bookcategory.categoryId
+        WHERE bookId = #{bookId}
+    </select>
+
+    <!-- 定义结果集映射 -->
+    <resultMap id="bookResultMap" type="Book">
+        <id property="bookId" column="bookId"/>
+        <result property="bookName" column="bookName"/>
+        <result property="price" column="price"/>
+        <result property="description" column="description"/>
+        <result property="categoryId" column="categoryId"/>
+    </resultMap>
+
+    <!-- 批量新增书本信息 -->
+    <insert id="batchInsertBooks" parameterType="java.util.List">
+        INSERT INTO Book (bookName, price, description, categoryId)
+        VALUES
+        <foreach collection="list" item="book" separator=",">
+            (#{book.bookName}, #{book.price}, #{book.description}, #{book.categoryId})
+        </foreach>
+    </insert>
+
+    <!-- 批量删除书本信息 -->
+    <delete id="batchDeleteBooks" parameterType="java.util.List">
+        DELETE FROM Book
+        WHERE bookId IN
+        <foreach collection="list" item="bookId" open="(" separator="," close=")">
+            #{bookId}
+        </foreach>
+    </delete>
+
+    <!-- 定义结果集映射 -->
+    <resultMap id="bookCategoryResultMap" type="Book">
+        <id property="bookId" column="bookId"/>
+        <result property="bookName" column="bookName"/>
+        <result property="price" column="price"/>
+        <result property="description" column="description"/>
+        <!-- 使用association关联查询 -->
+        <association property="category" javaType="BookCategory">
+            <id property="categoryId" column="categoryId"/>
+            <result property="categoryName" column="categoryName"/>
+
+
+        </association>
+    </resultMap>
+
+    <!-- 查询书本价格在30-90之间的书本信息以及书本类别名称 -->
+    <select id="getBooksByPriceRange" parameterType="Map" resultMap="bookDetailsResultMap">
+
+
+        SELECT * FROM book
+        INNER JOIN bookcategory on book.categoryId=bookcategory.categoryId
+
+
+        <where>
+
+            <if test="map.minPrice != null">
+                AND price &gt; #{map.minPrice}
+            </if>
+
+            <if test="map.maxPrice != null">
+                AND price &lt; #{map.maxPrice}
+            </if>
+
+        </where>
+    </select>
+
+
+    <!-- 查询书本描述中包含关键词的书本信息 -->
+    <select id="getDescription" parameterType="String" resultMap="bookResultMap">
+        SELECT *
+        FROM book
+        <where>
+            <if test="param1 != null and param1 != ''">
+                AND description LIKE CONCAT('%', #{param1}, '%')
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

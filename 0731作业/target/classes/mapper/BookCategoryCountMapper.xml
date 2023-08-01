@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.BookCategoryCountMapper">
+
+
+    <resultMap id="booksPerCategoryResultMap" type="BookCategoryCount">
+        <result property="libraryName" column="name"/>
+        <result property="categoryName" column="categoryName"/>
+        <result property="bookCount" column="count(book.categoryId)"/>
+    </resultMap>
+
+
+    <!-- 定义查询语句 -->
+    <select id="countBooksPerCategory" resultMap="booksPerCategoryResultMap">
+        SELECT library.name, bookcategory.categoryName, count(book.categoryId) as "count(book.categoryId)"
+        FROM book
+        INNER JOIN bookcategory ON book.categoryId = bookcategory.categoryId
+        INNER JOIN library ON library.libraryId = bookcategory.libraryId
+        GROUP BY bookcategory.categoryId
+    </select>
+</mapper>

@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="0728作业" />
+        <module name="0731作业" />
         <module name="0727作业" />
         <module name="0726作业" />
       </profile>

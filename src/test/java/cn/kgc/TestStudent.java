@@ -57,9 +57,12 @@ public class TestStudent {
 
             // 打开数据库会话，获取 SqlSession 对象，用于执行 SQL 语句
             SqlSession sqlSession = sqlSessionFactory.openSession();
+            SqlSession sqlSession2 = sqlSessionFactory.openSession();
+
 
             // 执行 SQL 查询语句，获取所有学生的列表
             Student student = sqlSession.selectOne("getStudentById", 1);
+            Student student1 = sqlSession2.selectOne("getStudentById", 1);
 
             // 遍历学生列表，打印每个学生对象的信息
             System.out.println(student.toString());

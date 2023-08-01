@@ -55,8 +55,10 @@ public class TestSchool {
     @Test
     //选择某id 的数据
     public void testById() {
-        School school = sqlSession.selectOne("getSchoolById", 1);
+        School school = sqlSession.selectOne("getSchoolById", 3);
         System.out.println(school.toString());
+
+
     }
 
     @Test

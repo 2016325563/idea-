@@ -5,6 +5,8 @@
     <properties resource="jdbc.properties"></properties>
     <settings>
         <setting name="logImpl" value="LOG4J"/>
+
+
     </settings>
     <typeAliases>
         <!--用类名作为别名,可以省略-->

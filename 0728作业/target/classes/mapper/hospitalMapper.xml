@@ -18,10 +18,7 @@
 
 
 
-    <delete id="">
 
-        DELETE FROM doctor WHERE doctor.docId=100
-    </delete>
 
 
 </mapper>

@@ -9,9 +9,17 @@ public class School {
     private String schoolAddress;
     private String schoolPhone;
 
+    @Override
+    public String toString() {
+        return "School{" +
+                "sid=" + sid +
+                ", schoolName='" + schoolName + '\'' +
+                ", schoolAddress='" + schoolAddress + '\'' +
+                ", schoolPhone='" + schoolPhone + '\'' +
+                '}';
+    }
 
-
-    // 构造方法
+// 构造方法
 
 
     public School() {
@@ -22,16 +30,6 @@ public class School {
         this.schoolName = schoolName;
         this.schoolAddress = schoolAddress;
         this.schoolPhone = schoolPhone;
-    }
-
-    @Override
-    public String toString() {
-        return "School{" +
-                "sid=" + sid +
-                ", schoolName='" + schoolName + '\'' +
-                ", schoolAddress='" + schoolAddress + '\'' +
-                ", schoolPhone='" + schoolPhone + '\'' +
-                '}';
     }
 
     // Getters 和 Setters

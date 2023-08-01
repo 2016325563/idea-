@@ -1,6 +1,8 @@
 package cn.kgc.entity;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
     private Integer stuId;
     private String stuName;
     private Integer stuAge;

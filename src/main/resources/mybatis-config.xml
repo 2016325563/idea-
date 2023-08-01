@@ -3,6 +3,8 @@
 <configuration>
     <settings>
         <setting name="logImpl" value="LOG4J"/>
+        <setting name="cacheEnabled" value="true"/>
+
     </settings>
     <typeAliases>
         <!--用类名作为别名,可以省略-->
