@@ -4,7 +4,7 @@
     <properties resource="jdbc.properties"></properties>
 
     <settings>
-        <setting name="logImpl" value="SLF4J"/>
+        <setting name="logImpl" value="LOG4J"/>
     </settings>
     <typeAliases>
         <typeAlias type="entity.Doctor" alias="Doctor"/>
@@ -24,8 +24,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mapper/doctorMapper.xml"/>
-        <mapper resource="mapper/hospitalMapper.xml"/>
         <mapper class="mapper.doctorMapper"/>
         <mapper class="mapper.hospitalMapper"/>
 

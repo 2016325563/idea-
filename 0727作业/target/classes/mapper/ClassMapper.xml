@@ -13,19 +13,100 @@
     <!-- 定义结果映射 -->
     <resultMap id="ClassResultMap" type="Class">
         <!-- 将数据库字段与Class实体对象的属性进行映射 -->
-        <id property="classId" column="classId" />
-        <result property="className" column="className" />
-        <result property="schoolId" column="schoolId" />
+        <id property="classId" column="classId"/>
+        <result property="className" column="className"/>
+        <result property="schoolId" column="schoolId"/>
 
         <!-- 使用association标签定义school属性的关联 -->
-        <association property="school" resultMap="SchoolResultMap" />
+        <association property="school" resultMap="SchoolResultMap"/>
     </resultMap>
 
     <!-- 定义School实体对象的结果映射 -->
     <resultMap id="SchoolResultMap" type="School">
-        <id property="schoolId" column="schoolId" />
-        <result property="schoolName" column="schoolName" />
-        <result property="schoolAddress" column="schoolAddress" />
+        <id property="schoolId" column="schoolId"/>
+        <result property="schoolName" column="schoolName"/>
+        <result property="schoolAddress" column="schoolAddress"/>
+    </resultMap>
+
+
+    <!-- ClassMapper.xml -->
+
+    <!-- 定义查询语句，返回类型为Class实体对象的List集合 -->
+    <select id="selectClassesWithStudentsBySchoolId" resultMap="ClassResultMap">
+        SELECT *
+        FROM classes c
+        LEFT JOIN student s ON c.classId = s.classId
+        WHERE c.schoolId = #{schoolId}
+    </select>
+
+    <!-- 定义结果映射 -->
+    <resultMap id="ClassResultMap" type="Class">
+        <!-- 将数据库字段与Class实体对象的属性进行映射 -->
+        <id property="classId" column="classId"/>
+        <result property="className" column="className"/>
+        <result property="schoolId" column="schoolId"/>
+
+        <!-- 使用association标签定义school属性的关联 -->
+        <association property="school" resultMap="SchoolResultMap"/>
+
+        <!-- 使用collection标签定义students属性的关联 -->
+        <collection property="students" ofType="Student" resultMap="StudentResultMap"/>
+    </resultMap>
+
+    <!-- 定义School实体对象的结果映射 -->
+    <resultMap id="SchoolResultMap" type="School">
+        <id property="schoolId" column="schoolId"/>
+        <result property="schoolName" column="schoolName"/>
+        <result property="schoolAddress" column="schoolAddress"/>
+    </resultMap>
+
+    <!-- 定义Student实体对象的结果映射 -->
+    <resultMap id="StudentResultMap" type="Student">
+        <id property="stuId" column="stuId"/>
+        <result property="stuName" column="stuName"/>
+        <result property="stuSex" column="stuSex"/>
+        <result property="stuAge" column="stuAge"/>
+        <result property="stuAddress" column="stuAddress"/>
+    </resultMap>
+
+    <!-- ClassMapper.xml -->
+
+    <!-- 定义查询语句，返回类型为Class实体对象的List集合 -->
+    <select id="selectClassWithStudentsByClassId" resultMap="ClassResultMap">
+        SELECT *
+        FROM classes c
+        LEFT JOIN student s ON c.classId = s.classId
+        WHERE c.classId = #{classId}
+    </select>
+
+    <!-- 定义结果映射 -->
+    <resultMap id="ClassResultMap" type="Class">
+        <!-- 将数据库字段与Class实体对象的属性进行映射 -->
+        <id property="classId" column="classId"/>
+        <result property="className" column="className"/>
+        <result property="schoolId" column="schoolId"/>
+
+        <!-- 使用association标签定义school属性的关联 -->
+        <association property="school" resultMap="SchoolResultMap"/>
+
+        <!-- 使用collection标签定义students属性的关联 -->
+        <collection property="students" ofType="Student" resultMap="StudentResultMap"/>
+    </resultMap>
+
+    <!-- 定义School实体对象的结果映射 -->
+    <resultMap id="SchoolResultMap" type="School">
+        <id property="schoolId" column="schoolId"/>
+        <result property="schoolName" column="schoolName"/>
+        <result property="schoolAddress" column="schoolAddress"/>
+    </resultMap>
+
+    <!-- 定义Student实体对象的结果映射 -->
+    <resultMap id="StudentResultMap" type="Student">
+        <id property="stuId" column="stuId"/>
+        <result property="stuName" column="stuName"/>
+        <result property="stuSex" column="stuSex"/>
+        <result property="stuAge" column="stuAge"/>
+        <result property="stuAddress" column="stuAddress"/>
     </resultMap>
 
 
