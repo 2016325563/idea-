@@ -15,8 +15,9 @@
         <module>0728作业</module>
         <module>0731作业</module>
         <module>学习spring时期</module>
-        <module>spring2305</module>
         <module>0801作业</module>
+
+        <module>0802作业</module>
     </modules>
 
     <dependencies>

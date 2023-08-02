@@ -12,11 +12,11 @@
     </settings>
     <typeAliases>
         <!--用类名作为别名,可以省略-->
-        <typeAlias type="cn.kgc.entity.School" alias="School"/>
-        <typeAlias type="cn.kgc.entity.Users" alias="Users"/>
-        <typeAlias type="cn.kgc.entity.Card" alias="Card"/>
-        <typeAlias type="cn.kgc.entity.Phone" alias="Phone"/>
-        <typeAlias type="cn.kgc.entity.Student" alias="Student"/>
+        <typeAlias type="cn.kgc.cn.kgc.entity.School" alias="School"/>
+        <typeAlias type="cn.kgc.cn.kgc.entity.Users" alias="Users"/>
+        <typeAlias type="cn.kgc.cn.kgc.entity.Card" alias="Card"/>
+        <typeAlias type="cn.kgc.cn.kgc.entity.Phone" alias="Phone"/>
+        <typeAlias type="cn.kgc.cn.kgc.entity.Student" alias="Student"/>
         <!--使用统一的包名-->
         <package name="cn.kgc.entity"/>
     </typeAliases>
@@ -42,7 +42,7 @@
         <mapper resource="mapper/ProjectMapper.xml"/>
         <mapper resource="mapper/CardMapper.xml"/>
         <mapper resource="mapper/BookMapper.xml"/>
-        <mapper class="cn.kgc.mapper.BookMapper"></mapper>
+        <mapper class="cn.kgc.cn.kgc.mapper.BookMapper"></mapper>
 
     </mappers>
 </configuration>

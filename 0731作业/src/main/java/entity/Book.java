@@ -1,4 +1,4 @@
-package entity;
+package cn.kgc.entity;
 
 import java.util.List;
 

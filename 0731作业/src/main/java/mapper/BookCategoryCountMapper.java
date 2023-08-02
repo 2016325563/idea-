@@ -1,6 +1,6 @@
-package mapper;
+package cn.kgc.mapper;
 
-import entity.BookCategoryCount;
+import cn.kgc.entity.BookCategoryCount;
 
 import java.util.List;
 

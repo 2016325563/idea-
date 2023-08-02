@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.mapper.classRoomMapper">
+    <!--插入一个电脑-->
+    <insert id="addClass" parameterType="ClassRoom">
+
+        INSERT INTO classroom VALUE (null,#{name},0)
+
+
+    </insert>
+    <!--选择所有可能的教室的名称,这里的单个字符串插入要注意什么呢-->
+    <select id="alikeClassName" parameterType="String" resultType="ClassRoom">
+        SELECT * FROM classroom WHERE name LIKE CONCAT('%', #{alikeValue}, '%')
+    </select>
+
+
+    <!--选择可能的id的所有信息-->
+    <resultMap id="ComputerInClass" type="ClassRoom">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="floor" column="floor"></result>
+        <collection property="computers" ofType="Computer">
+            <id property="id" column="id"></id>
+            <result property="classroomId" column="classroom_id"></result>
+            <result property="name" column="name"></result>
+            <result property="price" column="price"></result>
+            <result property="color" column="color"></result>
+            <result property="size" column="size"></result>
+            <result property="brand" column="brand"></result>
+
+
+        </collection>
+
+    </resultMap>
+
+    <select id="getAllInfoById" parameterType="Integer" resultMap="ComputerInClass">
+
+        SELECT * FROM classroom
+        INNER JOIN computer ON classroom.id=computer.classroom_id
+        WHERE classroom.id=#{alikeNum}
+
+
+    </select>
+
+
+</mapper>

@@ -1,6 +1,6 @@
-package mapper;
+package cn.kgc.mapper;
 
-import entity.Library;
+import cn.kgc.entity.Library;
 
 import java.util.List;
 

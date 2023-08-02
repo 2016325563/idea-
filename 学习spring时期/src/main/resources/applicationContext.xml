@@ -9,11 +9,13 @@
     -->
 
     <!--可以给bean设置作用域 表示是单例还是多里模式-->
-    <bean id="student" class="entity.Student">
+    <bean id="student" class="cn.kgc.entity.Student " scope="prototype" autowire="byType">
         <property name="stuId" value="1001"></property>
         <property name="stuName" value="zhangsan"></property>
-        <property name="friend" ref="Friend"></property>
-        <property name="print" ref="Print"></property>
+        <!--
+               <property name="friend" ref="Friend"></property>
+        -->
+        <!--<property name="print" ref="Print"></property>
         <property name="list">
             <list>
                 <value>a</value>
@@ -23,26 +25,26 @@
         <property name="listFriend">
             <list>
 
-                <!--在使用赋值的时候使用的对象的集合  需要提前使用定义对象-->
+                &lt;!&ndash;在使用赋值的时候使用的对象的集合  需要提前使用定义对象&ndash;&gt;
                 <ref bean="Friend"></ref>
                 <ref bean="Friend2"></ref>
 
             </list>
 
-        </property>
+        </property>-->
     </bean>
 
-    <bean id="Friend" class="entity.Friend">
+    <bean id="Friend" class="cn.kgc.entity.Friend">
 
         <property name="name" value="李四"></property>
     </bean>
 
-    <bean id="Friend2" class="entity.Friend">
+    <!--<bean id="Friend2" class="entity.Friend">
 
         <property name="name" value="李五"></property>
-    </bean>
+    </bean>-->
 
-    <bean id="car" class="entity.Car">
+    <bean id="car" class="cn.kgc.entity.Car">
         <!-- 设置Car的初始值 -->
         <property name="color" value="Red"/>
         <property name="brand" value="Toyota"/>
@@ -50,7 +52,7 @@
     </bean>
 
 
-    <bean id="dog" class="entity.Dog">
+    <bean id="dog" class="cn.kgc.entity.Dog">
         <!-- 设置Dog的初始值 -->
         <property name="color" value="Brown"/>
         <property name="breed" value="Labrador"/>
@@ -60,7 +62,7 @@
 
     <bean id="Print" class="Service.impl.BlackPrintImpl"></bean>
 
-    <bean id="stu1" class="entity.Student">
+    <bean id="stu1" class="cn.kgc.entity.Student">
         <constructor-arg index="0" value="1002"></constructor-arg>
         <constructor-arg index="1" value="wangwu"></constructor-arg>
         <constructor-arg index="2" ref="Friend"></constructor-arg>

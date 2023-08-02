@@ -1,5 +1,5 @@
-import entity.Doctor;
-import entity.Hospital;
+import cn.kgc.entity.Doctor;
+import cn.kgc.entity.Hospital;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

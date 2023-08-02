@@ -1,6 +1,6 @@
-package entity;
+package cn.kgc.entity;
 
-import entity.School;
+import cn.kgc.entity.School;
 
 import java.util.List;
 

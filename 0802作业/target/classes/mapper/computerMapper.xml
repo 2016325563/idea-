@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.mapper.computerMapper">
+
+    <!--给电脑涨价-->
+    <update id="modComputerPri" parameterType="Double">
+
+        UPDATE computer
+
+        <set>
+            <if test="alikeNum=!null">
+                computer.price=price+#{alikeNum}
+            </if>
+            WHERE computer.brand="联想"
+
+        </set>
+
+    </update>
+
+    <resultMap id="NumOfComputer" type="Computer">
+        <id property="id" column="classroom_id"/>
+        <result property="name" column="name"/>
+        <result property="blackComputerCount" column="黑色电脑的数量"/>
+    </resultMap>
+
+    <!--统计黑色的电脑-->
+    <select id="numOfCompWithClass" resultMap="NumOfComputer">
+        SELECT computer.classroom_id,classroom.`name`,COUNT(computer.color="黑色") as "黑色电脑的数量" from computer
+        INNER JOIN classroom on classroom.id=computer.classroom_id
+        GROUP BY computer.classroom_id
+
+
+    </select>
+    <!--根据id的删除电脑-->
+    <delete id="delComputerById" parameterType="Integer">
+
+        DELETE from computer
+        WHERE computer.id=#{alikeNum}
+
+
+    </delete>
+
+
+</mapper>

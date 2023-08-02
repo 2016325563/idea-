@@ -3,14 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean class="entity.Car" id="car1">
+    <bean class="cn.kgc.entity.Car" id="car1">
 
 
         <property name="animal" ref="Animal1"></property>
 
     </bean>
 
-    <bean class="entity.Car" id="car2">
+    <bean class="cn.kgc.entity.Car" id="car2">
 
 
         <property name="animal" ref="Animal2"></property>
@@ -25,12 +25,12 @@
 
     </bean>
 
-    <bean class="entity.School" id="student1">
+    <bean class="cn.kgc.entity.School" id="student1">
         <!--补充学生的字段的值,-->
 
     </bean>
 
-    <bean class="entity.School" id="school1">
+    <bean class="cn.kgc.entity.School" id="school1">
         <!--给与相关的字段进行赋值-->
         <property name="name" value="123某某学校"/>
         <property name="address" value="123某某地址"/>
@@ -39,14 +39,14 @@
         <property name="totalClasses" value="10"></property>
     </bean>
 
-    <bean class="entity.Class" id="Class1">
+    <bean class="cn.kgc.entity.Class" id="Class1">
         <!--给与字段进行赋值-->
         <property name="id" value="123"/>
         <property name="name" value="123某某班级"/>
         <property name="student" ref="Student1"></property>
     </bean>
 
-    <bean class="entity.Student" id="Student1">
+    <bean class="cn.kgc.entity.Student" id="Student1">
         <!--给与字段进行赋值-->
         <property name="id" value="123"/>
         <property name="name" value="123某某学生"/>

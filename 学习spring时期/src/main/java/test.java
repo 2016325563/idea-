@@ -1,4 +1,4 @@
-import entity.Student;
+import cn.kgc.entity.Student;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -13,7 +13,7 @@ public class test {
 //        Student student2 = applicationContext.getBean("student", Student.class);
 //        /*默认使用单例模式的方法*/
 //        System.out.println(student == student2);
-        System.out.println(student.getList() + "\t" + student.getListFriend());
+        System.out.println(student.getFriend().getName());
         //student.sayHi();
 
 

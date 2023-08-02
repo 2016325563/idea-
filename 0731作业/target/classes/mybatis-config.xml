@@ -23,10 +23,10 @@
         </environment>
     </environments>
     <mappers>
-        <mapper class="mapper.BookCategoryMapper"/>
-        <mapper class="mapper.BookMapper"/>
-        <mapper class="mapper.LibraryMapper"/>
-        <mapper class="mapper.BookCategoryCountMapper"/>
+        <mapper class="cn.kgc.mapper.BookCategoryMapper"/>
+        <mapper class="cn.kgc.mapper.BookMapper"/>
+        <mapper class="cn.kgc.mapper.LibraryMapper"/>
+        <mapper class="cn.kgc.mapper.BookCategoryCountMapper"/>
 
 
 

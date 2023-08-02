@@ -1,7 +1,7 @@
-package mapper;
+package cn.kgc.mapper;
 
-import entity.Book;
-import entity.Library;
+import cn.kgc.entity.Book;
+import cn.kgc.entity.Library;
 
 import java.util.List;
 

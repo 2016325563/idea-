@@ -1,4 +1,4 @@
-package entity;
+package cn.kgc.entity;
 
 public class Student {
 

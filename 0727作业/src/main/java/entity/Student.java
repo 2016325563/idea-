@@ -1,4 +1,4 @@
-package entity;
+package cn.kgc.entity;
 
 public class Student {
     private int stuId;          // 学生ID

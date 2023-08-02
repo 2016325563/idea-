@@ -1,5 +1,5 @@
-import entity.Car;
-import entity.Student;
+import cn.kgc.entity.Car;
+import cn.kgc.entity.Student;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

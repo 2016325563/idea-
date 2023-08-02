@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="entity.Student">
+<mapper namespace="cn.kgc.entity.Student">
     <!-- 在对应的Mapper XML文件中进行配置 -->
     <select id="selectStudentsWithClassName" resultMap="StudentWithClassResultMap">
         SELECT s.*, c.className

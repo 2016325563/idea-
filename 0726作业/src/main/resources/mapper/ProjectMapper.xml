@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="cn.kgc.mapper.ProjectMapper">
+<mapper namespace="cn.kgc.cn.kgc.mapper.ProjectMapper">
 
     <select id="getAllProject" resultType="project" parameterType="String">
         select * from project where projName Like concat('%',#{projName},'%');

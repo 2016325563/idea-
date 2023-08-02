@@ -1,10 +1,10 @@
-import entity.Book;
-import entity.BookCategory;
-import entity.BookCategoryCount;
-import entity.Library;
-import mapper.BookCategoryCountMapper;
-import mapper.BookCategoryMapper;
-import mapper.BookMapper;
+import cn.kgc.entity.Book;
+import cn.kgc.entity.BookCategory;
+import cn.kgc.entity.BookCategoryCount;
+import cn.kgc.entity.Library;
+import cn.kgc.mapper.BookCategoryCountMapper;
+import cn.kgc.mapper.BookCategoryMapper;
+import cn.kgc.mapper.BookMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

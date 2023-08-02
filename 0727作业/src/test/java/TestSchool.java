@@ -1,6 +1,6 @@
-import entity.Student;
-import entity.School;
-import entity.Class;
+import cn.kgc.entity.Student;
+import cn.kgc.entity.School;
+import cn.kgc.entity.Class;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

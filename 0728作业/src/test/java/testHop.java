@@ -1,6 +1,6 @@
-import entity.Hospital;
-import mapper.doctorMapper;
-import mapper.hospitalMapper;
+import cn.kgc.entity.Hospital;
+import cn.kgc.mapper.doctorMapper;
+import cn.kgc.mapper.hospitalMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

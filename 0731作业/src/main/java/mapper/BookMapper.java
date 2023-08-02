@@ -1,6 +1,6 @@
-package mapper;
+package cn.kgc.mapper;
 
-import entity.Book;
+import cn.kgc.entity.Book;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.HashMap;

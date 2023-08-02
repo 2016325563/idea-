@@ -7,8 +7,8 @@
         <setting name="logImpl" value="LOG4J"/>
     </settings>
     <typeAliases>
-        <typeAlias type="entity.Doctor" alias="Doctor"/>
-        <typeAlias type="entity.Hospital" alias="Hospital"/>
+        <typeAlias type="cn.kgc.entity.Doctor" alias="Doctor"/>
+        <typeAlias type="cn.kgc.entity.Hospital" alias="Hospital"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -24,8 +24,8 @@
         </environment>
     </environments>
     <mappers>
-        <mapper class="mapper.doctorMapper"/>
-        <mapper class="mapper.hospitalMapper"/>
+        <mapper class="cn.kgc.mapper.doctorMapper"/>
+        <mapper class="cn.kgc.mapper.hospitalMapper"/>
 
 
     </mappers>

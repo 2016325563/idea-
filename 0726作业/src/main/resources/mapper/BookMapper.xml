@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
-<mapper namespace="mapper.BookMapper">
+<mapper namespace="cn.kgc.mapper.BookMapper">
     <select id="getBookByIds" parameterType="List" resultType="Book">
         select * from book where bookId in
         <foreach collection="list" open="(" close=")" separator="," item="item" index="i">

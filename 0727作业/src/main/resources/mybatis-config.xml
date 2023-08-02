@@ -8,9 +8,9 @@
     </settings>
     <typeAliases>
         <!--用类名作为别名,可以省略-->
-        <typeAlias type="entity.School" alias="School"/>
-        <typeAlias type="entity.Student" alias="Student"/>
-        <typeAlias type="entity.Class" alias="Class"/>
+        <typeAlias type="cn.kgc.entity.School" alias="School"/>
+        <typeAlias type="cn.kgc.entity.Student" alias="Student"/>
+        <typeAlias type="cn.kgc.entity.Class" alias="Class"/>
 
         <!--使用统一的包名-->
         <package name="entity"/>

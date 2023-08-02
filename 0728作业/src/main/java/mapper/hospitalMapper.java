@@ -1,6 +1,6 @@
-package mapper;
+package cn.kgc.mapper;
 
-import entity.Hospital;
+import cn.kgc.entity.Hospital;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
