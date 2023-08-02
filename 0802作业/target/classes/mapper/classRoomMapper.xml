@@ -20,7 +20,7 @@
         <result property="name" column="name"></result>
         <result property="floor" column="floor"></result>
         <collection property="computers" ofType="Computer">
-            <id property="id" column="id"></id>
+            <id property="id" column="cId"></id>
             <result property="classroomId" column="classroom_id"></result>
             <result property="name" column="name"></result>
             <result property="price" column="price"></result>

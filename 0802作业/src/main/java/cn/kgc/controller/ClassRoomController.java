@@ -40,9 +40,10 @@ public class ClassRoomController {
 
         for (ClassRoom classRoom : classRooms) {
             System.out.println(classRoom.getComputers().size());
-            System.out.print(classRoom.getId() + "\t" + classRoom.getName() + "\t" + classRoom.getFloor() + "\t");
             List<Computer> computers = classRoom.getComputers();
             for (Computer computer : computers) {
+                System.out.print(classRoom.getId() + "\t" + classRoom.getName() + "\t" + classRoom.getFloor() + "\t");
+
                 System.out.println(computer.getId() + "\t" + computer.getName() + "\t" + computer.getPrice() + "\t" + computer.getColor() + "\t" + computer.getBrand() + "\t" + computer.getClassroomId());
                 // 其他电脑属性...
             }
