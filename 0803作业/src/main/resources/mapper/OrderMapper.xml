@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.mapper.OrderMapper">
+
+    <insert id="addOrder" parameterType="Order">
+
+        INSERT INTO orders VALUES (null, #{orderTime}, #{orderPerson}, #{totalAmount}, #{orderStatus}, #{shippingStatus})
+
+    </insert>
+
+    <update id="updOrder" parameterType="Order">
+        UPDATE orders SET orders.orderTime=#{orderTime} ,orders.orderPerson=#{orderPerson} WHERE orders.orderId=#{orderId}
+
+
+    </update>
+
+    <select id="getAllOrder" resultType="Order">
+
+        SELECT * from orders
+
+
+    </select>
+
+
+    <delete id="delOrderById" parameterType="Integer">
+
+        delete from orders WHERE orders.orderId=#{orderId}
+
+    </delete>
+
+</mapper>
