@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class buyComputerServiceImpl implements buyComputerService {
@@ -21,34 +23,49 @@ public class buyComputerServiceImpl implements buyComputerService {
     OrderService orderService;
     @Autowired
     StockService stockService;
+    private Integer NowId;
 
+    public HashMap<String, Object> creatOrder(String accountName, Integer computerId) {
 
-    public void buyComputer(String accountName, Integer computerId) {
 
         Computer computer = computerService.selectComputerPriceById(computerId);
-
-        /*更新库存的数量*/
-        Integer OutboundStatus = stockService.updateStockQuantityById(computerId);
-        /*更新账户的余额*/
-        Integer paymentStatus = accountService.updateAccountBalanceByName(accountName, computer.getComputerPrice());
         /*导入订单*/
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String format = simpleDateFormat.format(date);
         Order order = null;
-        if (OutboundStatus > 0 && paymentStatus > 0) {
-            order = new Order(null, format, computerId, 1, computer.getComputerPrice(), paymentStatus, "支付成功,库存充足");
-        } else if (OutboundStatus > 0 && paymentStatus <= 0) {
+        /*默认是未支付的状态*/
+        order = new Order(null, format, computerId, 1, computer.getComputerPrice(), 0, "未支付或库存不足");
+        orderService.insOrder(order);
+        /*获得最新的订单号码*/
 
-            order = new Order(null, format, computerId, 1, computer.getComputerPrice(), paymentStatus, "待支付,库存充足");
+        NowId = orderService.getNewId();
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("computer", computer);
+        map.put("NowId", NowId);
 
-        } else {
+        return map;
+    }
 
-            order = new Order(null, format, computerId, 1, computer.getComputerPrice(), paymentStatus, "支付成功,待补货");
 
+    public void buyComputer(String accountName, Integer computerId, Map map) {
+
+
+        Computer computer = (Computer) map.get("computer");
+        Integer NowId = (Integer) map.get("NowId");
+
+
+
+        /*更新库存的数量*/
+        Integer OutboundStatus = stockService.updateStockQuantityById(computerId, NowId);
+        /*更新账户的余额*/
+        Integer paymentStatus = accountService.updateAccountBalanceByName(accountName, computer.getComputerPrice(), NowId);
+
+
+        if (OutboundStatus == 1 && paymentStatus == 1) {
+            orderService.upOrderStatus(NowId);
         }
 
-        orderService.insOrder(order);
 
     }
 }

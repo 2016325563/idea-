@@ -1,7 +1,6 @@
 package cn.kgc.controller;
 
 import cn.kgc.service.AccountService;
-import cn.kgc.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @org.springframework.stereotype.Controller
@@ -15,9 +14,9 @@ public class AccountController {
 
     }
 
-    public void updateAccountBalanceByName(String accountName, Integer computerPrice) {
+    public void updateAccountBalanceByName(String accountName, Integer computerPrice, Integer NowId) {
 
-        accountService.updateAccountBalanceByName(accountName, computerPrice);
+        accountService.updateAccountBalanceByName(accountName, computerPrice, NowId);
     }
 
 }

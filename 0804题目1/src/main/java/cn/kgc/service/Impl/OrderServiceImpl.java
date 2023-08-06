@@ -29,4 +29,13 @@ public class OrderServiceImpl implements OrderService {
         return row;
     }
 
+    public Integer getNewId() {
+        return orderMapper.getNewId();
+    }
+
+    public Integer upOrderStatus(Integer orderId) {
+        return orderMapper.upOrderStatus(orderId);
+    }
+
+
 }

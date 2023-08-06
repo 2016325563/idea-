@@ -7,4 +7,16 @@
 
     </insert>
 
+    <select id="getNewId" resultType="Integer">
+
+        SELECT MAX(orders.orderId) FROM orders
+
+    </select>
+
+    <update id="upOrderStatus" parameterType="Integer">
+
+        UPDATE orders set orders.paymentStatus=1,orders.shippingStatus="支付成功,库存充足" WHERE orders.orderId=#{orderId}
+
+    </update>
+
 </mapper>

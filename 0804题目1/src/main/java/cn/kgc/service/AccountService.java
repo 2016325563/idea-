@@ -1,7 +1,6 @@
 package cn.kgc.service;
 
 import cn.kgc.entity.Account;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,6 +14,6 @@ public interface AccountService {
 
 
     /*更改账户的余额*/
-    Integer updateAccountBalanceByName(String accountName, Integer computerPrice);
+    Integer updateAccountBalanceByName(String accountName, Integer price, Integer NowId);
 
 }

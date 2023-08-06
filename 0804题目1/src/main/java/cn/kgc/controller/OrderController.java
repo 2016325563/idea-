@@ -24,4 +24,13 @@ public class OrderController {
 
     }
 
+    public Integer orderMapper() {
+
+        return orderService.getNewId();
+
+    }
+
+    public Integer upOrderStatus(Integer orderId) {
+        return orderService.upOrderStatus(orderId);
+    }
 }

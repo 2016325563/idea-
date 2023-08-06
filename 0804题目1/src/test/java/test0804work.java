@@ -2,6 +2,8 @@ import cn.kgc.controller.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Map;
+
 public class test0804work {
 
     public static void main(String[] args) {
@@ -21,8 +23,8 @@ public class test0804work {
         //accountController.selectAccountBalanceByName("UserA");
         //accountController.updateAccountBalanceByName("UserA");
 
-
-        buyComputerController.buyComputer("UserA", 1);
+        Map OrderInfo = buyComputerController.creatOrder("UserA", 1);
+        buyComputerController.buyComputer("UserA", 1, OrderInfo);
 
 
     }

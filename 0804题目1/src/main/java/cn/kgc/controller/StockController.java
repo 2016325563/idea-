@@ -13,9 +13,9 @@ public class StockController {
         stockService.selectStockQuantityById(computerId);
     }
 
-    public void updateStockQuantityById(Integer computerId) {
+    public void updateStockQuantityById(Integer computerId,Integer NowId) {
 
-        stockService.updateStockQuantityById(computerId);
+        stockService.updateStockQuantityById(computerId, NowId);
 
     }
 

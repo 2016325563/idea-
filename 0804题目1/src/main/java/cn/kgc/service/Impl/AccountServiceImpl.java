@@ -16,14 +16,14 @@ public class AccountServiceImpl implements AccountService {
         return accountMapper.selectAccountBalanceByName(accountName);
     }
 
-    public Integer updateAccountBalanceByName(String accountName, Integer computerPrice) {
+    public Integer updateAccountBalanceByName(String accountName, Integer price, Integer NowId) {
 
         Account account = selectAccountBalanceByName(accountName);
-        if (account.getAccountBalance() < computerPrice) {
-            throw new RuntimeException("账户的余额不足");
+        if (account.getAccountBalance() < NowId) {
+            throw new RuntimeException("账户的余额不足,"+"订单号码为" + NowId + "的订单异常,请重新处理");
         }
 
-        Integer row = accountMapper.updateAccountBalanceByName(accountName, computerPrice);
+        Integer row = accountMapper.updateAccountBalanceByName(accountName, NowId);
         if (row > 0) {
             System.out.println("支付成功");
         }

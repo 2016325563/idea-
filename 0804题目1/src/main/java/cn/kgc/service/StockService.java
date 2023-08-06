@@ -1,7 +1,6 @@
 package cn.kgc.service;
 
 import cn.kgc.entity.Stock;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,6 +12,6 @@ public interface StockService {
         */
     Stock selectStockQuantityById( Integer computerId);
 
-    Integer updateStockQuantityById(Integer computerId);
+    Integer updateStockQuantityById(Integer computerId, Integer NowId);
 
 }
