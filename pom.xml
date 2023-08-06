@@ -19,6 +19,8 @@
 
         <module>0802作业</module>
         <module>0803作业</module>
+        <module>0804题目2</module>
+        <module>0803题目1</module>
     </modules>
 
     <dependencies>

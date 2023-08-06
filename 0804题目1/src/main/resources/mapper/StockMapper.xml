@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.mapper.StockMapper">
+
+    <resultMap id="StockQuantityResult" type="Stock">
+        <result property="computerId" column="computerId"/>
+        <result property="stockQuantity" column="stockQuantity"/>
+    </resultMap>
+
+    <select id="selectStockQuantityById" parameterType="Integer" resultMap="StockQuantityResult">
+
+        SELECT stock.computerId,stock.stockQuantity FROM stock
+        WHERE stock.computerId=#{computerId}
+
+    </select>
+
+    <update id="updateStockQuantityById" parameterType="Integer">
+
+        UPDATE stock set stock.stockQuantity=stock.stockQuantity-1 WHERE stock.computerId=#{computerId}
+
+    </update>
+
+</mapper>

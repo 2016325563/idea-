@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.mapper.ComputerMapper">
+
+    <resultMap id="ComputerPriceResult" type="Computer">
+        <result property="computerId" column="computerId"/>
+        <result property="computerPrice" column="computerPrice"/>
+    </resultMap>
+
+    <select id="selectComputerPriceById" parameterType="Integer" resultMap="ComputerPriceResult">
+
+        SELECT computer.computerId,computer.computerPrice FROM computer WHERE computer.computerId=#{computerId}
+
+    </select>
+
+
+</mapper>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--主键扫描-->
+    <context:component-scan base-package="cn.kgc"></context:component-scan>
+    <!--jdbc文件-->
+    <context:property-placeholder location="jdbc.properties"></context:property-placeholder>
+
+    <!--连接数据库-->
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--依赖注入对象-->
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="typeAliasesPackage" value="cn.kgc.entity"></property>
+        <property name="mapperLocations" value="classpath:mapper/AccountMapper.xml"></property>
+        <property name="configuration">
+            <bean class="org.apache.ibatis.session.Configuration">
+                <property name="logImpl" value="org.apache.ibatis.logging.stdout.StdOutImpl"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <!--用来扫描map接口的-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--注入sql工厂-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+        <property name="basePackage" value="cn.kgc.mapper"></property>
+    </bean>
+    <!--事务管理器-->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+
+
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <tx:advice id="myadvice" transaction-manager="dataSourceTransactionManager">
+
+        <tx:attributes>
+            <!--方法开启事务 所有的-->
+            <tx:method name="*"/>
+        </tx:attributes>
+
+
+    </tx:advice>
+
+    <aop:config>
+
+        <aop:pointcut id="mycut" expression="execution(* cn.kgc.service.*.*(..))"/>
+        <aop:advisor advice-ref="myadvice" pointcut-ref="mycut"></aop:advisor>
+    </aop:config>
+    <!--配置切片的日志-->
+    <!--<aop:config>
+        &lt;!&ndash;配置了一个切面的对象 关联的对象在包里面的类&ndash;&gt;
+        <aop:aspect ref="logAspect">
+            &lt;!&ndash;配置切入点的位置,在切面的对象里&ndash;&gt;
+            &lt;!&ndash;第一是返回的类型
+            第二是子包
+            第三是类
+            省略号是参数
+            &ndash;&gt;
+            <aop:pointcut id="mycut" expression="execution(* cn.kgc.service.*.*(..))"/>
+            &lt;!&ndash;来自切面的方法,关联后台的切面的代码位置&ndash;&gt;
+            <aop:before method="before" pointcut-ref="mycut"></aop:before>
+            <aop:around method="around" pointcut-ref="mycut"></aop:around>
+            <aop:after method="after" pointcut-ref="mycut"></aop:after>
+
+        </aop:aspect>
+    </aop:config>-->
+
+    <!--使用注解的方式去使用aop-->
+    <aop:aspectj-autoproxy expose-proxy="true"></aop:aspectj-autoproxy>
+
+
+</beans>

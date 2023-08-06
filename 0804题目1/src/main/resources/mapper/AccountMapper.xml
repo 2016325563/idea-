@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.mapper.AccountMapper">
+
+    <resultMap id="AccountBalanceResult" type="Account">
+        <result property="accountName" column="accountName"/>
+        <result property="accountBalance" column="accountBalance"/>
+    </resultMap>
+
+    <select id="selectAccountBalanceByName" parameterType="String" resultMap="AccountBalanceResult">
+
+        SELECT account.accountName,account.accountBalance FROM account WHERE account.accountName=#{accountName}
+
+    </select>
+
+
+    <update id="updateAccountBalanceByName" parameterType="String">
+
+        UPDATE account set account.accountBalance=account.accountBalance-${computerPrice}
+        WHERE account.accountName=#{accountName}
+
+    </update>
+
+</mapper>
