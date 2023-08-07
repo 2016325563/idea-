@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.mapper.ProductMapper">
+
+    <!--产品和供应的映射-->
+    <resultMap id="ProAndSup" type="Supplier">
+        <id property="supplierId" column="supplier_id"></id>
+        <result property="supplierName" column="supplier_name"></result>
+        <result property="supplierPhone" column="supplier_phone"></result>
+        <result property="supplierAddress" column="supplier_address"></result>
+        <collection property="productList" ofType="Product" resultMap="ProductMap">
+        </collection>
+    </resultMap>
+    <!--产品的映射-->
+    <resultMap id="ProductMap" type="Product">
+        <id property="productId" column="product_id"></id>
+        <result property="productPrice" column="product_price"></result>
+        <result property="productName" column="product_name"></result>
+        <result property="productDescription" column="product_description"></result>
+    </resultMap>
+    <!--获得所有的信息-->
+    <select id="getAllInfo" resultMap="ProAndSup">
+        SELECT * FROM suppliers
+        left JOIN products on products.supplier_id=suppliers.supplier_id
+
+
+    </select>
+
+
+    <!--批量插入信息-->
+    <insert id="addProduct" parameterType="List">
+        insert into products values
+        <foreach collection="list" item="product" index="index" separator=",">
+            (#{product.productId},#{product.productPrice},#{product.productName},#{product.productDescription},#{product.supplierId})
+        </foreach>
+    </insert>
+
+
+
+    <!--删除对应id的商品-->
+    <delete id="DelProById" parameterType="Integer">
+
+        DELETE FROM products WHERE products.product_id=#{ProductId}
+
+    </delete>
+
+
+</mapper>
