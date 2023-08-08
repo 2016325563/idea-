@@ -13,7 +13,9 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
+
     public List<Product> getAllInfo() {
+
         return productService.getAllInfo();
     }
 
