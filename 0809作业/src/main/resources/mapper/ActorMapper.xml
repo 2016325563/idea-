@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.mapper.ActorMapper">
+
+
+    <select id="getAllActorOrAlike" parameterType="String" resultType="Actor">
+
+
+        SELECT * FROM actors
+        <where>
+
+            <if test="representativeWorks!=null and representativeWorks!=''">
+
+                representativeWorks LIKE concat('%',#{representativeWorks},'%');
+
+            </if>
+        </where>
+
+
+    </select>
+
+    <delete id="delById" parameterType="Integer">
+
+        DELETE FROM actors WHERE actorId = #{actorId};
+
+
+
+    </delete>
+
+    <insert id="addActor" parameterType="Actor">
+
+        INSERT INTO actors
+        VALUES (null, #{actorName}, #{stageName}, #{representativeWorks}, #{age}, #{gender});
+
+
+    </insert>
+
+
+</mapper>
