@@ -1,0 +1,23 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>新增业主信息</title>
+</head>
+<body>
+<h1>新增业主信息</h1>
+<!-- 使用thymeleaf标签来绑定业主对象，并使用input标签来显示和输入值 -->
+<form th:object="${owner}" th:action="@{/addOwnerByForm}">
+    <p>业主id：<input type="text" th:field="*{ownerId}"></p>
+    <p>名字：<input type="text" th:field="*{name}"></p>
+    <p>性别：<input type="text" th:field="*{gender}"></p>
+    <p>年龄：<input type="text" th:field="*{age}"></p>
+    <p>民族：<input type="text" th:field="*{nation}"></p>
+    <p>籍贯：<input type="text" th:field="*{origin}"></p>
+    <!-- 添加一个提交按钮，用于保存新增 -->
+    <button type="submit">提交</button>
+</form>
+</body>
+</html>

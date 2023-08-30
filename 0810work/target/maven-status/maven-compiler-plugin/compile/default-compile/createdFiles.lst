@@ -1,0 +1,10 @@
+cn\kgc\entity\Goods.class
+cn\kgc\service\CustomerService.class
+cn\kgc\entity\Customer.class
+cn\kgc\service\impl\GoodsServiceImpl.class
+cn\kgc\controller\GoodsController.class
+cn\kgc\mapper\GoodsMapper.class
+cn\kgc\controller\CustomerController.class
+cn\kgc\service\GoodsService.class
+cn\kgc\mapper\CustomerMapper.class
+cn\kgc\service\impl\CustomerServiceImpl.class

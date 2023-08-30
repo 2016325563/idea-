@@ -4,7 +4,8 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/0808作业" />
     <file type="web" url="file://$PROJECT_DIR$/0809作业" />
-    <file type="web" url="file://$PROJECT_DIR$/0810作业" />
+    <file type="web" url="file://$PROJECT_DIR$/0810work" />
+    <file type="web" url="file://$PROJECT_DIR$/test2" />
   </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
@@ -19,6 +20,7 @@
       <set>
         <option value="$PROJECT_DIR$/spring2305/pom.xml" />
         <option value="$PROJECT_DIR$/springAndMybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/test2/pom.xml" />
         <option value="$PROJECT_DIR$/学习spring时期/springAndMybatis/pom.xml" />
       </set>
     </option>

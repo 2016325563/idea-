@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>显示所有业主信息</title>
+</head>
+<body>
+<h1>显示所有业主信息</h1>
+<!-- 使用thymeleaf标签来遍历业主列表，并显示每个业主的信息 -->
+<table border="1">
+    <tr>
+        <th>业主id</th>
+        <th>名字</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>民族</th>
+        <th>籍贯</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="owner : ${list}">
+        <td th:text="${owner.ownerId}"></td>
+        <td th:text="${owner.name}"></td>
+        <td th:text="${owner.gender}"></td>
+        <td th:text="${owner.age}"></td>
+        <td th:text="${owner.nation}"></td>
+        <td th:text="${owner.origin}"></td>
+        <!-- 在每个业主信息旁边，添加一个超链接，用于查询该业主的所有房屋信息 -->
+        <td><a th:href="@{/showHouseByOwnerId(ownerId=${owner.ownerId})}">查看房屋信息</a></td>
+    </tr>
+</table>
+<!-- 在网页上添加一个按钮，用于新增一个业主信息 -->
+<button><a th:href="@{/addOwner}">新增业主信息</a></button>
+</body>
+</html>

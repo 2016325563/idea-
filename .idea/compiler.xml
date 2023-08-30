@@ -7,19 +7,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="学习spring时期" />
-        <module name="0802作业" />
+        <module name="0810work" />
+        <module name="test2" />
+        <module name="0807作业" />
+        <module name="0808作业" />
+        <module name="0809作业" />
+        <module name="0804题目2" />
+        <module name="0829work" />
+        <module name="0830work" />
         <module name="0731作业" />
+        <module name="0822" />
+        <module name="学习spring时期" />
         <module name="0726作业" />
         <module name="0727作业" />
-        <module name="0807作业" />
-        <module name="0804题目2" />
-        <module name="0803作业" />
-        <module name="0801作业" />
-        <module name="0809作业" />
-        <module name="0810作业" />
         <module name="0728作业" />
-        <module name="0808作业" />
+        <module name="0801作业" />
+        <module name="0802作业" />
+        <module name="0803作业" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -28,6 +32,13 @@
       <module name="springAndMybatis" target="1.5" />
       <module name="SpringAndMybatis" target="1.5" />
       <module name="StuSpring02" target="1.5" />
+      <module name="test2" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="0829work" options="-parameters" />
+      <module name="0830work" options="-parameters" />
+    </option>
   </component>
 </project>

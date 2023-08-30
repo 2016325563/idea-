@@ -1,0 +1,59 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>显示某个业主的所有房屋信息</title>
+
+</head>
+<body>
+<h1>显示某个业主的所有房屋信息</h1>
+<!-- 使用thymeleaf标签来遍历房屋列表，并显示每个房屋的信息 -->
+<table border="1">
+    <tr>
+        <th>房屋id</th>
+        <th>房屋门牌号</th>
+        <th>楼栋</th>
+        <th>单元号</th>
+        <th>地址</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="house : ${list}">
+        <td th:text="${house.houseId}"></td>
+        <td th:text="${house.houseNumber}"></td>
+        <td th:text="${house.building}"></td>
+        <td th:text="${house.unit}"></td>
+        <td th:text="${house.address}"></td>
+        <!-- 在每个房屋信息旁边，添加两个按钮，分别用于删除和修改该房屋信息 -->
+        <!-- 点击删除按钮后，弹出一个确认框，询问用户是否确定删除该房屋信息 -->
+        <!-- 如果用户确定删除，则从数据库中删除该房屋信息，并刷新网页 -->
+        <!-- 如果用户取消删除，则关闭确认框，并保留原来的房屋信息 -->
+        <!-- 点击修改按钮后，跳转到一个表单页面，并显示该房屋信息的原始值 -->
+        <!-- 用户可以在表单中修改任意字段的值，并点击提交按钮来保存修改 -->
+        <!-- 提交成功后，返回到原来的网页，并显示修改后的房屋信息 -->
+        <td>
+            <!-- 使用JavaScript代码来实现删除功能的逻辑 -->
+            <script th:inline="javascript">
+                // 定义一个函数，用于弹出确认框，并根据用户的选择来执行删除操作
+                function confirmDelete(houseId, ownerId) {
+                    // 弹出确认框，询问用户是否确定删除该房屋信息
+                    var flag = confirm("您确定要删除该房屋信息吗？");
+                    // 如果用户确定删除，则跳转到删除的URL，并传递房屋id和业主id参数
+                    var url = /*[[${/deleteHouseByHouseId(houseId=houseId, ownerId=ownerId)}]]*/ '';
+                    if (flag) {
+                        window.location.href = url;
+                    }
+                    // 如果用户取消删除，则不做任何操作
+                }
+            </script>
+            <button th:onclick="'confirmDelete(' + ${house.houseId} + ', ' + ${house.ownerId} + ')'">删除</button>
+            <button><a
+                    th:href="@{/updateHouseByHouseId(houseId=${house.houseId}, houseNumber=${house.houseNumber}, building=${house.building}, unit=${house.unit}, address=${house.address}, ownerId=${house.ownerId})}">修改</a>
+            </button>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

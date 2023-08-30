@@ -1,0 +1,38 @@
+#配置spring 包含了连接和模版的映射
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/0830work
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  thymeleaf:
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+    servlet:
+      content-type: text/html
+#定义了日志的输出
+logging:
+  level:
+    cn.kgc: debug
+#定义的端口的设置
+server:
+  port: 8090
+  servlet:
+    context-path: /0830work
+#定义了Mybatis的控制模式  映射mapper文件和使用囫囵大小写的形式
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted  #逻辑删除对应的字段的值
+      logic-not-delete-value: 0
+      logic-delete-value: 1
+      table-underline: false #取消他的下划线
+  mapper-locations:
+    - classpath:mapper/user/*.xml
+    - classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: false

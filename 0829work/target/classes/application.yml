@@ -1,0 +1,45 @@
+server:
+  port: 8080 #一个使用空格间隔的
+  servlet:
+    context-path: /0829work #设置项目的名称
+
+
+myname: 张三
+sex: 男
+age: 10
+
+
+person:
+  name: lisi
+  sex: 男
+  age: 21
+
+spring:
+  profiles:      #设置配置文件优先级
+    active: test  #激活dev配置文件
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/0829work?autoReconnect=true&useSSL=false&characterEncoding=utf-8
+    username: root
+    password: root
+  thymeleaf:
+    mode: HTML
+    cache: false
+    encoding: utf-8
+    servlet:
+      content-type: text/html
+    suffix: .html
+    prefix: classpath:/templates/
+
+#配置了一个数据源
+logging:
+  file: aaaaaa.log   #日志文件
+  level:
+    cn.kgc: debug  #日志级别
+
+#配置了mybatis的映射的方式
+mybatis:
+  type-aliases-package: cn.kgc.entity
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true

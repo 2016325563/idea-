@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kgc.mapper.OwnerMapper">
+    <!-- 查询所有业主信息的sql语句 -->
+    <select id="selectAllOwner" resultType="cn.kgc.entity.Owner">
+    SELECT * FROM owner ORDER BY owner_id;
+  </select>
+    <!-- 根据业主id查询所有房屋信息的sql语句 -->
+    <select id="selectHouseByOwnerId" resultType="cn.kgc.entity.House" parameterType="int">
+    SELECT house_id, house_number, building, unit, address,owner_id  FROM house WHERE owner_id = #{ownerId} ORDER BY house_id;
+  </select>
+    <!-- 根据房屋id删除房屋信息的sql语句 -->
+    <delete id="deleteHouseByHouseId" parameterType="int">
+    DELETE FROM house WHERE house_id = #{houseId};
+  </delete>
+    <!-- 根据房屋id更新房屋信息的sql语句 -->
+    <update id="updateHouseByHouseId" parameterType="cn.kgc.entity.House">
+    UPDATE house SET house_number = #{houseNumber}, building = #{building}, unit = #{unit}, address = #{address} WHERE house_id = #{houseId};
+  </update>
+    <!-- 插入业主信息的sql语句 -->
+    <insert id="insertOwner" parameterType="cn.kgc.entity.Owner">
+    INSERT INTO owner (owner_id, name, gender, age, nation, origin) VALUES (#{ownerId}, #{name}, #{gender}, #{age}, #{nation}, #{origin});
+  </insert>
+</mapper>

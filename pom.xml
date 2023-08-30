@@ -20,11 +20,15 @@
         <module>0802作业</module>
         <module>0803作业</module>
         <module>0804题目2</module>
-        <module>0803题目1</module>
         <module>0807作业</module>
         <module>0808作业</module>
         <module>0809作业</module>
-        <module>0810作业</module>
+        <module>0810work</module>
+        <module>test2</module>
+        <module>test2</module>
+        <module>0822</module>
+        <module>0829work</module>
+        <module>0830work</module>
     </modules>
 
     <dependencies>

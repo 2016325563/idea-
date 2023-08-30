@@ -1,0 +1,25 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>修改房屋信息</title>
+</head>
+<body>
+<h1>修改房屋信息</h1>
+<!-- 使用thymeleaf标签来绑定房屋对象，并使用input标签来显示和输入值 -->
+<form th:object="${house}" th:action="@{/updateHouse}">
+    <p>房屋id：<input type="text" th:field="*{houseId}" readonly></p>
+    <p>房屋门牌号：<input type="text" th:field="*{houseNumber}"></p>
+    <p>楼栋：<input type="text" th:field="*{building}"></p>
+    <p>单元号：<input type="text" th:field="*{unit}"></p>
+    <p>地址：<input type="text" th:field="*{address}"></p>
+    <p>业主id：<input type="text" th:field="*{ownerId}" readonly></p>
+    <!-- 添加一个隐藏的input标签，用于传递业主id参数 -->
+    <input type="hidden" name="ownerId" th:value="${house.ownerId}">
+    <!-- 添加一个提交按钮，用于保存修改 -->
+    <button type="submit">提交</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动物园管理系统</title>
+</head>
+<body>
+<h1>动物园管理系统</h1>
+
+<h2>动物园列表</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>名称</th>
+        <th>地址</th>
+        <th>电话</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="zoo : ${zoos}">
+        <td th:text="${zoo.id}"></td>
+        <td th:text="${zoo.name}"></td>
+        <td th:text="${zoo.address}"></td>
+        <td th:text="${zoo.phone}"></td>
+        <td><a th:href="@{/zoo/{id}/delete(id=${zoo.id})}">删除</a></td>
+    </tr>
+</table>
+
+<h2>新增动物园</h2>
+<form th:action="@{/zoo/add}" method="post">
+    <label for="zoo-name">名称：</label><input type="text" id="zoo-name" name="name"><br>
+    <label for="zoo-address">地址：</label><input type="text" id="zoo-address" name="address"><br>
+    <label for="zoo-phone">电话：</label><input type="text" id="zoo-phone" name="phone"><br>
+    <input type="submit" value="提交">
+</form>
+
+<h2>修改动物园</h2>
+<form th:action="@{/zoo/update}" method="post">
+    <label for="update-zoo-id">ID：</label><input type="text" id="update-zoo-id" name="id"><br>
+    <label for="update-zoo-name">名称：</label><input type="text" id="update-zoo-name" name="name"><br>
+    <label for="update-zoo-address">地址：</label><input type="text" id="<EUGPSCoordinates>update-zoo-address" name="<EUGPSCoordinates>address"><br>
+    <label for="<EUGPSCoordinates>update-zoo-phone">电话：</label><input type="<EUGPSCoordinates>text" id="<EUGPSCoordinates>update-zoo-phone" name="<EUGPSCoordinates>phone"><br>
+    <input type="<EUGPSCoordinates>submit" value="<EUGPSCoordinates>提交">
+</form>
+
+<h2>动物列表</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>名称</th>
+        <th>性别</th>
+        <th>颜色</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="<EUGPSCoordinates>animal : ${animals}">
+        <td th:text="${animal.id}"></td>
+        <td th:text="${animal.name}"></td>
+        <td th:text="${animal.gender}"></td>
+        <td th:text="${animal.color}"></td>
+        <td><a th:href="@{/animal/{id}/delete(id=${animal.id})}">删除</a></td>
+    </tr<EUGPSCoordinates>>
+</table>
+
+<h2>新增动物<EUGPSCoordinates></h2<EUGPSCoordinates>>
+    <form th:action="@{/animal/add}" method="<EUGPSCoordinates>post">
+        <label for="<EUGPSCoordinates>animal-name">名称：</label><input type="<EUGPSCoordinates>text" id="<EUGPSCoordinates>animal-name" name="<EUGPSCoordinates>name"><br<EUGPSCoordinates>>
+        <label for="<EUGPSCoordinates>animal-gender">性别：</label><input type="<EUGPSCoordinates>text" id="<EUGPSCoordinates>animal-gender" name="<EUGPSCoordinates>gender"><br<EUGPSCoordinates>>
+            <label for="<EUGPSCoordinates>animal-color">颜色：</label><input type="<EUGPSCoordinates>text" id="<EUGPSCoordinates>animal-color" name="<EUGPSCoordinates>color"><br<EUGPSCoordinates>>
+                <input type="<EUGPSCoordinates>submit" value="<EUGPSCoordinates>提交">
+    </form<EUGPSCoordinates>>
+
+        <!-- 省略其他内容 -->
+</body>
+</html>
