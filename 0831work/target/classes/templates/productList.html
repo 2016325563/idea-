@@ -1,0 +1,68 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Product List</title>
+</head>
+<body>
+<div th:with="user=${userDetails}">
+    <div th:insert="common :: navbar"></div>
+</div>
+<div class="container mt-5">
+    <h1>商品列表</h1>
+    <div class="row">
+        <div class="col-3" th:each="product : ${pageProduct.getRecords()}">
+            <div class="card mb-3">
+                <img class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${product.getName()}"></h5>
+                    <p class="card-text" th:text="${product.getPrice()}"></p>
+                    <p class="card-text" th:text="${product.getDescription()}"></p>
+                    <a th:href="@{/productDetail(id=${product.getId()})}" class="btn btn-primary">查看详情</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 翻页栏 -->
+    <nav aria-label="Page navigation" style="margin-top: 60px">
+
+        <ul class="pagination justify-content-center">
+
+            <li class="page-item" th:if="${pageProduct.hasPrevious}">
+                <a class="page-link" th:href="@{/productList(page=1)}" aria-label="Previous">
+                    <span aria-hidden="true">首页</span>
+                </a>
+            </li>
+            <!-- 上一页 -->
+            <li class="page-item" th:if="${pageProduct.hasPrevious}">
+                <a class="page-link" th:href="@{/productList(page=${pageProduct.current - 1})}" aria-label="Previous">
+                    <span aria-hidden="true">上一页</span>
+                </a>
+            </li>
+
+
+            <li class="page-item" th:each="pageNumber : ${#numbers.sequence(1, pageProduct.pages)}">
+
+                <a th:href="@{/productList(page=${pageNumber})}" th:text="${pageNumber}" th:class="${pageNumber == pageProduct.current} ? 'page-link active' : 'page-link'"></a>
+
+
+            </li>
+
+            <!-- 下一页 -->
+            <li class="page-item" th:if="${pageProduct.hasNext}">
+                <a class="page-link" th:href="@{/productList(page=${pageProduct.current + 1})}" aria-label="Next">
+                    <span aria-hidden="true">下一页</span>
+                </a>
+            </li>
+            <li class="page-item" th:if="${pageProduct.hasNext}">
+                <a class="page-link" th:href="@{/productList(page=${pageProduct.pages})}" aria-label="Next">
+                    <span aria-hidden="true">尾页</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

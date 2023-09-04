@@ -1,0 +1,72 @@
+<!--
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <title>Product Detail</title>
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <h1>商品详情</h1>
+
+    <p>商品详细介绍信息</p>
+
+    <button class="btn btn-primary">提交订单</button>
+
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Detail</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div th:with="user=${userDetails}">
+    <div th:insert="common :: navbar"></div>
+</div>
+
+
+<div class="container mt-5">
+    <h1>商品详情</h1>
+    <!-- 显示商品信息 -->
+    <h2 th:text="${product.name}"></h2>
+    <p th:text="${product.description}"></p>
+    <p>价格: <span th:text="${product.price}"></span> 元</p>
+
+    <!-- 补充数据展示的表单 -->
+    <form th:action="@{/orderList}" method="post">
+        <input type="hidden" th:value="${product.id}" name="productId">
+        <div class="form-group">
+            <label for="name">名字</label>
+            <input type="text" class="form-control" id="name" name="name" th:value="${userDetails.getUsername()}">
+        </div>
+        <div class="form-group">
+            <label for="phone">手机</label>
+            <input type="text" class="form-control" id="phone" name="phone" th:value="'13588888888'">
+        </div>
+        <div class="form-group">
+            <label for="address">地址</label>
+            <input type="text" class="form-control" id="address" name="address" th:value="'北京市'">
+        </div>
+        <button type="submit" class="btn btn-primary">提交订单</button>
+    </form>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

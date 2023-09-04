@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>修改动物园</title>
+    <!-- 引入bootstrap样式 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <h2>修改动物园</h2>
+
+    <form th:action="@{/zoo/update}" method="post" th:object="${zoo}">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="form-group">
+            <label>名称</label>
+            <input type="text" class="form-control" th:field="*{name}" />
+        </div>
+
+        <div class="form-group">
+            <label>地址</label>
+            <input type="text" class="form-control" th:field="*{address}" />
+        </div>
+
+        <div class="form-group">
+            <label>电话</label>
+            <input type="text" class="form-control" th:field="*{phone}" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">提交</button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

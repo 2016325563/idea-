@@ -13,9 +13,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Animal {
-    private int id;
+    private Integer id;
     private String name;
     private String gender;
     private String color;
+    private Integer deleted;
+
     // 省略getter和setter方法
 }

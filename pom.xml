@@ -29,6 +29,7 @@
         <module>0822</module>
         <module>0829work</module>
         <module>0830work</module>
+        <module>0831work</module>
     </modules>
 
     <dependencies>

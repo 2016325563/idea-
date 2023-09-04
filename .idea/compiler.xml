@@ -14,6 +14,7 @@
         <module name="0809作业" />
         <module name="0804题目2" />
         <module name="0829work" />
+        <module name="0831work" />
         <module name="0830work" />
         <module name="0731作业" />
         <module name="0822" />
@@ -39,6 +40,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="0829work" options="-parameters" />
       <module name="0830work" options="-parameters" />
+      <module name="0831work" options="-parameters" />
     </option>
   </component>
 </project>

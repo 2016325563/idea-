@@ -1,0 +1,22 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>学生的修改</title>
+</head>
+<body>
+<form action="modById" method="post">
+    id:<input type="text" readonly name="stuName" th:field="*{aStudent.stuId}"><br>
+    姓名:<input type="text" name="stuName" th:field="*{aStudent.stuName}"><br>
+    年龄:<input type="text" name="stuAge" th:field="*{aStudent.stuAge}"><br>
+    性别:<input type="radio" name="stuSex" value="男" checked th:field="*{aStudent.stuSex}">男
+    <input type="radio" name="stuSex" value="女" th:field="*{aStudent.stuSex}">女<br>
+    地址:<input type="text" name="stuAddress" th:field="*{aStudent.stuAddress}"><br>
+    <input type="submit" value="修改">
+
+</form>
+
+</body>
+</html>

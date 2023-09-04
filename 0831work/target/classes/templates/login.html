@@ -1,0 +1,38 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Login</title>
+</head>
+
+<body>
+<div th:with="user=${userDetails}">
+    <div th:insert="common :: navbar"></div>
+</div>
+<div class="container mt-5">
+
+    <h1>登录</h1>
+
+    <form th:action="@{/dologin}" method="post">
+
+        <div class="form-group">
+            <label>用户名</label>
+            <input type="text" name="username" class="form-control" placeholder="请输入用户名">
+        </div>
+
+        <div class="form-group">
+            <label>密码</label>
+            <input type="password" name="password" class="form-control" placeholder="请输入密码">
+        </div>
+
+        <button type="submit" class="btn btn-primary">登录</button>
+
+    </form>
+
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

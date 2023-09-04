@@ -98,7 +98,7 @@
 <div class="mask">
 
 
-    <div class="row">
+        <div class="row">
         <c:forEach items="${goods}" var="good">
             <div class="col-md-3">
 

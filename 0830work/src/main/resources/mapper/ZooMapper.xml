@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.kgc.mapper.ZooMapper">
+
+    <resultMap id="ZooWithAnimalMap" type="cn.kgc.entity.Zoo">
+        <id property="id" column="zoo_id"/>
+        <result property="name" column="zoo_name"/>
+        <result property="address" column="zoo_Address"></result>
+        <result property="phone" column="zoo_phone"></result>
+        <collection property="animals" ofType="cn.kgc.entity.Animal">
+            <id property="id" column="animal_id"/>
+            <result property="name" column="animal_name"/>
+            <result property="gender" column="animal_gender"/>
+            <result property="color" column="animal_color"/>
+        </collection>
+    </resultMap>
+
+    <select id="ZooWithAnimal" resultMap="ZooWithAnimalMap">
+        SELECT z.id AS zoo_id, z.name AS zoo_name,z.Address As zoo_Address,z.phone As zoo_phone,
+        a.id AS animal_id, a.name AS animal_name, a.gender AS animal_gender, a.color AS animal_color
+        FROM zoo z
+        JOIN zoo_animal za ON z.id = za.zoo_id
+        JOIN animal a ON za.animal_id = a.id
+    </select>
+
+
+</mapper>
